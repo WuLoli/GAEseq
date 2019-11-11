@@ -63,11 +63,12 @@ Running GAEseq:
 -----------------
 1. First set up config file.
 2. Command : ./ExtractMatrix config<br/>
-             python GAEseq.py
+             python GAEseq_haplo.py(or GAEseq_viral.py)
 
 Output : haplotypes.txt
 
 Reference:
 -----------------
 Ziqi Ke and Haris Vikalo. "A graph auto-encoder for haplotype assembly and viral quasispecies reconstruction," The 34th AAAI Conference on Artificial Intelligence (AAAI-20), New York, NY, February 7-12, 2020.<br/>
+<br/>
 Simulated dataset used in the paper can be downloaded at (https://drive.google.com/open?id=1v84CcCwCcKWc8zqsCKKT64-fMwLLFWBV)
