@@ -56,7 +56,7 @@ Which GPU to use (set to -1 if only use CPU; otherwise set to 0, 1, 2 or 3 ... i
 13. dropout probability of read nodes to SNP nodes layer
 14. dropout probability of SNP nodes to read nodes layer
 15. dropout probability of dense layer
-16. Which GPU to use represents the GPU you want to use. Use (from tensorflow.python.client import device_lib device_lib.list_local_devices()) to check the index of GPUs that are available.
+16. Which GPU to use represents the GPU you want to use. Use (from tensorflow.python.client import device_lib device_lib.list_local_devices()) to check the index of GPUs that are available.<br/>
 (This is used for viral quasispecies reconstruction)17. MEC improvement threshold : 0.09
 
 Running GAEseq:
