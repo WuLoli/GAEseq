@@ -63,10 +63,9 @@ Running GAEseq:
 -----------------
 1. First set up config file.
 2. Command : <br/>
-    1. ./ExtractMatrix config<br/>
-    2. python GAEseq_haplo.py(or GAEseq_viral.py)
-
-Output : haplotypes.txt
+    (1) ./ExtractMatrix config<br/>
+    (2) python GAEseq_haplo.py(or GAEseq_viral.py)<br/>
+    Output : haplotypes.txt
 
 Reference:
 -----------------
