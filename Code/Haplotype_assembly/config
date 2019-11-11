@@ -1,0 +1,16 @@
+filename of reference sequence (FASTA) : K2_Cov5_Sample1.fasta  
+filname of the aligned reads (sam format) : K2_Cov5_Sample1.sam
+SNP_thres (0.5 / ploidy for haplotype assembly and 0 for viral quasispecies) : 0.25
+reconstruction_start : 1
+reconstruction_stop : 5000
+min_mapping_qual : 60
+min_read_length : 70
+max_insert_length : 3000
+characteristic zone name : simu_erro1_K3_cov15_l5000_iter_1
+K (ploidy) : 3
+Graph Convolutional layer number (must be even) : 2
+Number of experiments : 200
+dropout probability of read nodes to SNP nodes layer : 0
+dropout probability of SNP nodes to read nodes layer : 0
+dropout probability of dense layer : 0
+Which GPU to use (set to -1 if only use CPU; otherwise set to 0, 1, 2 or 3 ... if multiple GPUs are available; check instructions for details) : 1
