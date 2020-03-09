@@ -67,6 +67,8 @@ Running GAEseq:
     (2) python GAEseq_haplo.py(or GAEseq_viral.py)<br/>
     Output : haplotypes.txt
 
+**Please use BWA MEM (http://bio-bwa.sourceforge.net/bwa.shtml) to generate the SAM file from FASTQ (reads) and FASTA (referebce) files and then run ./ExtractMatrix.**
+
 Reference:
 -----------------
 Ziqi Ke and Haris Vikalo. "A graph auto-encoder for haplotype assembly and viral quasispecies reconstruction," The 34th AAAI Conference on Artificial Intelligence (AAAI-20), New York, NY, February 7-12, 2020.<br/>
