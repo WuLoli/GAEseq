@@ -67,7 +67,7 @@ Running GAEseq:
     (2) python GAEseq_haplo.py(or GAEseq_viral.py)<br/>
     Output : haplotypes.txt
 
-**Please use BWA MEM (http://bio-bwa.sourceforge.net/bwa.shtml) to generate the SAM file from FASTQ (reads) and FASTA (referebce) files and then run ./ExtractMatrix.**
+**Alignment can be done via BWA MEM (http://bio-bwa.sourceforge.net/bwa.shtml) to generate the SAM file from FASTQ (reads) and FASTA (referebce) files**
 
 Reference:
 -----------------
