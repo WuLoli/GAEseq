@@ -74,3 +74,4 @@ Reference:
 Ziqi Ke and Haris Vikalo. "A graph auto-encoder for haplotype assembly and viral quasispecies reconstruction," The 34th AAAI Conference on Artificial Intelligence (AAAI-20), New York, NY, February 7-12, 2020.<br/>
 <br/>
 Simulated dataset used in the paper can be downloaded at (https://drive.google.com/open?id=1v84CcCwCcKWc8zqsCKKT64-fMwLLFWBV)
+Realistic HIV-1 dataset used in the paper can be downloaded at (https://drive.google.com/file/d/1qMKQcFLsFegibTuZohKz8XpuTvPN8GSw/view?usp=sharing)
