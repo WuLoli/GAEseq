@@ -67,7 +67,7 @@ Running GAEseq:
     (2) python GAEseq_haplo.py(or GAEseq_viral.py)<br/>
     Output : haplotypes.txt
 
-**Alignment can be done via BWA MEM (http://bio-bwa.sourceforge.net/bwa.shtml) to generate the SAM file from FASTQ (reads) and FASTA (reference genome) files**
+**Alignment can be done via BWA MEM (http://bio-bwa.sourceforge.net/bwa.shtml) to generate the SAM file from FASTQ (reads) and FASTA (reference genome) files. SAM file can be sorted using "samtools sort".**
 
 Reference:
 -----------------
