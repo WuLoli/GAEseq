@@ -4,7 +4,7 @@ from Bio import SeqIO
 import random
 from itertools import permutations
 
-# convert list of sequence to numpy array (A -> 1, C -> 2, G -> 3, T -> 4 and unobserved -> 0)
+# convert list of sequence to numpy array
 def list2array(ViralSeq_list):
     ViralSeq = np.zeros((len(ViralSeq_list), len(ViralSeq_list[0])))
 
@@ -18,38 +18,14 @@ def list2array(ViralSeq_list):
                 ViralSeq[i, j] = 3
             elif ViralSeq_list[i][j] == 'T':
                 ViralSeq[i, j] = 4
+            else:
+                ViralSeq[i, j] = 0
     
     return ViralSeq
 
 # calculate hamming distance between two sequences
 def hamming_distance(read, haplo):
     return sum((haplo - read)[np.where(read != 0)] != 0)
-
-# evaluate the recall rate and reconstruction rate
-def recall_reconstruction_rate(Recovered_Haplo, SNVHaplo):
-    distance_table = np.zeros((len(Recovered_Haplo), len(SNVHaplo)))
-    for i in range(len(Recovered_Haplo)):
-        for j in range(len(SNVHaplo)):
-            distance_table[i, j] = hamming_distance(SNVHaplo[j, :], Recovered_Haplo[i, :])
-    
-    index = list(permutations(list(range(SNVHaplo.shape[0]))))
-    distance = []
-    for item in index:
-        count = 0
-        for i in range(len(item)):
-            count += distance_table[i, item[i]]
-        distance.append(count)
-    index = index[np.argmin(np.array(distance))]
-    
-    reconstruction_rate = []
-    for i in range(len(index)):
-        reconstruction_rate.append(1 - distance_table[i, index[i]] / SNVHaplo.shape[1])
-    
-    recall_rate = reconstruction_rate.count(1) / len(reconstruction_rate)
-    
-    CPR = 1 - min(distance) / (len(distance_table) * SNVHaplo.shape[1])
-    
-    return distance_table, reconstruction_rate, recall_rate, index, CPR
 
 # one hot encode
 def OneHotEncode(Haplo):

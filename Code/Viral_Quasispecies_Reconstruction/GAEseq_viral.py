@@ -6,10 +6,11 @@ from itertools import permutations
 from helper import *
 import time
 import os
+import sys
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # import config file
-with open('config', 'r') as f:
+with open(sys.argv[1], 'r') as f:
 	df = f.readlines()
 
 data = []
@@ -17,7 +18,12 @@ for item in df:
 	data.append(item.strip('\n').split(' : '))
 
 zone_name = data[8][1] # zone name
+Homo_name = zone_name + '_Homo_seq.txt' 
 SNVmatrix_name = zone_name + '_SNV_matrix.txt' # SNP matrix file name
+
+with open(Homo_name, 'r') as f:
+		Homo_list = f.readlines()
+Homo = np.fromstring(Homo_list[0][0:-1:1], dtype = int, sep = ' ')
 
 # import SNP fragment matrix
 with open(SNVmatrix_name, 'r') as f:
@@ -276,21 +282,36 @@ while rank_record[1] - rank_record[0] != 1:
 					dis[j] = hamming_distance(SNVmatrix[i, :], result[j, :])
 				index.append(np.argmin(dis))
 			fre = np.array([np.sum(np.array(index) == i) for i in range(0, len(result))]) / np.sum([np.sum(np.array(index) == i) for i in range(0, len(result))])
+			fre_index = np.argsort(fre)[::-1]
+			fre = fre[fre_index]
+			result = result[fre_index, :]
 
 			with open(zone_name + '_Virus_{}_Strains.txt'.format(ploidy_candidate), 'w') as f:
 				for i in range(result.shape[0]):
 					f.write('Virus ' + str(i + 1) + '--fre: ' + str(fre[i])  + '\n')
-					for j in range(result.shape[1]):
-						if result[i, j] == 1:
-							f.write('A')
-						elif result[i, j] == 2:
-							f.write('C')
-						elif result[i, j] == 3:
-							f.write('G')
-						elif result[i, j] == 4:
-							f.write('T')
-						elif result[i, j] == 0:
-							f.write('*')
+					homo_count = 0
+					for j in range(len(Homo)):
+						if Homo[j] != 0:
+							if Homo[j] == 1:
+								f.write('A')
+							elif Homo[j] == 2:
+								f.write('C')
+							elif Homo[j] == 3:
+								f.write('G')
+							elif Homo[j] == 4:
+								f.write('T')
+						else:
+							if result[i, homo_count] == 1:
+								f.write('A')
+							elif result[i, homo_count] == 2:
+								f.write('C')
+							elif result[i, homo_count] == 3:
+								f.write('G')
+							elif result[i, homo_count] == 4:
+								f.write('T')
+							elif result[i, homo_count] == 0:
+								f.write('*')
+							homo_count += 1
 					f.write('\n')
 		else:
 			continue
@@ -306,4 +327,9 @@ while rank_record[1] - rank_record[0] != 1:
 			ploidy = (rank_record[0] + rank_record[1]) // 2 
 
 print('Estimated number of clusters is {}'.format(rank_record[1]))
-print(MEC_record)
+for key in MEC_record:
+	if key != rank_record[1]:
+		filename = zone_name + '_Virus_{}_Strains.txt'.format(key)
+		os.remove(filename)
+
+
