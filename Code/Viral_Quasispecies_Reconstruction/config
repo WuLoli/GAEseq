@@ -1,6 +1,6 @@
 filename of reference sequence (FASTA) : K2_Cov5_Sample1.fasta  
 filname of the aligned reads (sam format) : K2_Cov5_Sample1.sam
-SNP_thres: 0
+SNP_thres: 0.01
 reconstruction_start : 1
 reconstruction_stop : 5000
 min_mapping_qual : 60
