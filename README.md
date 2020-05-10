@@ -64,7 +64,7 @@ Running GAEseq:
 1. First set up config file.
 2. Command : <br/>
     (1) ./ExtractMatrix config<br/>
-    (2) python GAEseq_haplo.py(or GAEseq_viral.py)<br/>
+    (2) python GAEseq_haplo.py(or GAEseq_viral.py) config<br/>
     Output : haplotypes.txt
 
 **Alignment can be done via BWA MEM (http://bio-bwa.sourceforge.net/bwa.shtml) to generate the SAM file from FASTQ (reads) and FASTA (reference genome) files. SAM file can be sorted using "samtools sort".**
