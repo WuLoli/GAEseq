@@ -9,7 +9,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # import config file
-with open('config', 'r') as f:
+with open(sys.argv[1], 'r') as f:
 	df = f.readlines()
 
 data = []
@@ -17,7 +17,12 @@ for item in df:
 	data.append(item.strip('\n').split(' : '))
 
 zone_name = data[8][1] # zone name
+Homo_name = zone_name + '_Homo_seq.txt' 
 SNVmatrix_name = zone_name + '_SNV_matrix.txt' # SNP matrix file name
+
+with open(Homo_name, 'r') as f:
+		Homo_list = f.readlines()
+Homo = np.fromstring(Homo_list[0][0:-1:1], dtype = int, sep = ' ')
 
 # import SNP fragment matrix
 with open(SNVmatrix_name, 'r') as f:
@@ -264,15 +269,27 @@ result = haplo_experiment[:, :, np.argmin(np.array(MEC_experiment))]
 with open(zone_name + '_Haplo_{}_Strains.txt'.format(ploidy), 'w') as f:
 	for i in range(result.shape[0]):
 		f.write('Haplotype ' + str(i + 1) + '\n')
-		for j in range(result.shape[1]):
-			if result[i, j] == 1:
-				f.write('A')
-			elif result[i, j] == 2:
-				f.write('C')
-			elif result[i, j] == 3:
-				f.write('G')
-			elif result[i, j] == 4:
-				f.write('T')
-			elif result[i, j] == 0:
-				f.write('*')
+		homo_count = 0
+		for j in range(len(Homo)):
+			if Homo[j] != 0:
+				if Homo[j] == 1:
+					f.write('A')
+				elif Homo[j] == 2:
+					f.write('C')
+				elif Homo[j] == 3:
+					f.write('G')
+				elif Homo[j] == 4:
+					f.write('T')
+			else:
+				if result[i, homo_count] == 1:
+					f.write('A')
+				elif result[i, homo_count] == 2:
+					f.write('C')
+				elif result[i, homo_count] == 3:
+					f.write('G')
+				elif result[i, homo_count] == 4:
+					f.write('T')
+				elif result[i, homo_count] == 0:
+					f.write('*')
+				homo_count += 1
 		f.write('\n')
