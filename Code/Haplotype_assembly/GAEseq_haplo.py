@@ -9,7 +9,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # import config file
-with open('config', 'r') as f:
+with open(sys.argv[1], 'r') as f:
 	df = f.readlines()
 
 data = []
