@@ -62,6 +62,6 @@ Running GAEseq:
 -----------------
 1. First set up config file.
 2. Command : ./ExtractMatrix config<br/>
-             python GAEseq_haplo.py
+             python GAEseq_haplo.py config
 
 Output : reconstructed haplotypes or viral quasispecies and inferred frequencies
