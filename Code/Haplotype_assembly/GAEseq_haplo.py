@@ -6,6 +6,7 @@ from itertools import permutations
 from helper import *
 import time
 import os
+import sys
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # import config file
