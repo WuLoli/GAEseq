@@ -24,7 +24,7 @@ Check config file format (configure to your setting)
 Config file example:<br/> 
 filename of reference sequence (FASTA) : K2_Cov5_Sample1.fasta  
 filname of the aligned reads (sam format) : K2_Cov5_Sample1.sam<br/>
-SNP_thres (0.5 / ploidy) : 0.25<br/>
+SNP_thres : 0.01<br/>
 reconstruction_start : 1<br/>
 reconstruction_stop : 5000<br/>
 min_mapping_qual : 60<br/>
@@ -42,7 +42,7 @@ MEC improvement threshold : 0.09
 
 1. filename of reference sequence (FASTA) represents the name of the reference genome in .fasta or .fa format.
 2. filname of the aligned reads (sam format) represents the name of the aligned paired-end reads file in .sam format.
-3. SNP_thres represents the threshold for SNP calling. The lower it is, the more nucleotide positions would be considered as SNPs. (it's set to 0.5 / ploidy in haplotype assembly and 0 for viral quasispecies reconstruction)
+3. SNP_thres represents the threshold for SNP calling. The lower it is, the more nucleotide positions would be considered as SNPs. (it's set to 0.5 / ploidy in haplotype assembly and 0.01 for viral quasispecies reconstruction)
 4. reconstruction_start represents the index in reference genome that is corresponding to the starting position of the genome region of interest (1 corresponds to the first nucleotide of the reference genome).
 5. reconstruction_stop represents the index in reference genome that is corresponding to the ending position of the genome region of interest.
 6. min_mapping_qual represents minimum read quality score (reads with score lower than it would be discarded).
@@ -62,6 +62,6 @@ Running GAEseq:
 -----------------
 1. First set up config file.
 2. Command : ./ExtractMatrix config<br/>
-             python GAEseq_viral.py
+             python GAEseq_viral.py config
 
 Output : reconstructed haplotypes or viral quasispecies and inferred frequencies
