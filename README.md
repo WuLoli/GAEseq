@@ -52,7 +52,7 @@ Which GPU to use (set to -1 if only use CPU; otherwise set to 0, 1, 2 or 3 ... i
 9. characteristic zone name can be set to any name of your choice.
 10. K (ploidy) represents the ploidy.
 11. Graph Convolutional layer number represents the number of graph convolutional layer you want to use and must to an even number.
-12. Number of experiments represents the number of experiments for which GAEhaP would be implemented and the reconstructed haplotypes corresponding to the lowest MEC score would be the stored in haplotypes.txt file.  
+12. Number of experiments represents the number of experiments for which GAEseq would be implemented and the reconstructed haplotypes corresponding to the lowest MEC score would be the stored in haplotypes.txt file.  
 13. dropout probability of read nodes to SNP nodes layer
 14. dropout probability of SNP nodes to read nodes layer
 15. dropout probability of dense layer
